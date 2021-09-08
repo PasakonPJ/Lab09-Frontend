@@ -19,13 +19,13 @@
   </div>
 </template>
 <script>
-import BaseInput from '@/components/BaseInput.vue'
+// import BaseInput from '@/components/BaseInput.vue'
 import EventService from '@/services/EventService.js'
 export default {
   inject: ['GStore'],
-  components:{
-  BaseInput
-  },
+  // components:{
+  // BaseInput
+  // },
   data() {
     return {
       event: {
