@@ -12,6 +12,24 @@
      
       <h3>Where is your event?</h3>
       <BaseInput v-model="event.location" type="text" label="Location" />
+      
+      <h3>who is your organizer?</h3>
+      <!-- <label>Select an Organizer</label>
+      <select v-model="event.organizer.id">
+
+        <option
+          v-for="option in GStore.organizers"
+          :value="option.id"
+          :key="option.id"
+          :selected="option.id === event.organizer.id"
+        >
+        {{option.name}}
+        </option>
+      </select> -->
+      <BaseSelect 
+      :options = "GStore.organizers"
+      v-model="event.organizer.id"
+      label = "Select an Organizer"/>
       <button type="submit">Submit</button>
     </form>
 
@@ -32,7 +50,8 @@ export default {
         category: '',
         title: '',
         description: '',
-        location: ''
+        location: '',
+        organizers: {id: '',name: ''}
       }
     }
   },
