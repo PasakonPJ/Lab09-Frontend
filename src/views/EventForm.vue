@@ -4,32 +4,20 @@
     <form @submit.prevent="saveEvent">
       <BaseInput v-model="event.category" type="text" label="Category" />
       <h3>Name & describe your event</h3>
-      
+
       <BaseInput v-model="event.title" type="text" label="Title" />
-      
+
       <BaseInput v-model="event.description" type="text" label="Description" />
 
-     
       <h3>Where is your event?</h3>
-      <BaseInput v-model="event.location" type="text" label="Location" />
-      
-      <h3>who is your organizer?</h3>
-      <!-- <label>Select an Organizer</label>
-      <select v-model="event.organizer.id">
 
-        <option
-          v-for="option in GStore.organizers"
-          :value="option.id"
-          :key="option.id"
-          :selected="option.id === event.organizer.id"
-        >
-        {{option.name}}
-        </option>
-      </select> -->
-      <BaseSelect 
-      :options = "GStore.organizers"
-      v-model="event.organizer.id"
-      label = "Select an Organizer"/>
+      <BaseInput v-model="event.location" type="text" label="Location" />
+      <h3>Who is your organizer?</h3>
+      <BaseSelect
+        :options="GStore.organizers"
+        v-model="event.organizer.id"
+        label="Select an Organizer"
+      />
       <button type="submit">Submit</button>
     </form>
 
@@ -37,13 +25,10 @@
   </div>
 </template>
 <script>
-// import BaseInput from '@/components/BaseInput.vue'
 import EventService from '@/services/EventService.js'
 export default {
   inject: ['GStore'],
-  // components:{
-  // BaseInput
-  // },
+
   data() {
     return {
       event: {
@@ -51,7 +36,7 @@ export default {
         title: '',
         description: '',
         location: '',
-        organizers: {id: '',name: ''}
+        organizer: { id: '', name: '' }
       }
     }
   },

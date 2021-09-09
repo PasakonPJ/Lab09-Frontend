@@ -9,9 +9,9 @@ import NotFound from '@/views/NotFound.vue'
 import AddEvent from '@/views/EventForm.vue'
 import NetWorkError from '@/views/NetworkError.vue'
 import NProgress from 'nprogress'
-import OrganizerService from '@/services/OrganizerService.js'
 import EventService from '@/services/EventService.js'
 import GStore from '@/store'
+import OrganizerService from '@/services/OrganizerService.js'
 
 const routes = [
   {
@@ -30,14 +30,13 @@ const routes = [
     name: 'AddEvent',
     component: AddEvent,
     beforeEnter: () => {
-      return OrganizerService.getOrganizers() 
+      return OrganizerService.getOrganizers()
         .then((response) => {
-         
-          GStore.organizers = response.data 
+          GStore.organizers = response.data
         })
         .catch(() => {
           GStore.organizers = null
-          console.log('cannot load')
+          console.log('cannot load organizer')
         })
     }
   },

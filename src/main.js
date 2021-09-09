@@ -11,12 +11,13 @@ const requireComponent = require.context(
     false,
     /Base[A-Z]\w+\.(vue|js)$/
 )
-
 // Create a reactive object
 
+/* createApp(App).use(router).provide('GStore', GStore).mount('#app') */
 const app = createApp(App)
 requireComponent.keys().forEach((fileName) => {
     const componentConfig = requireComponent(fileName)
+
     const componentName = upperFirst(
         camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, '$1'))
     )
